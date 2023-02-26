@@ -1,0 +1,35 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @event %>
+
+<div>
+
+<% if owner?(@event) %>
+  <%= link_to "Edit", edit_event_path(@event) %> |
+  <%= link_to "Destroy", destroy_user_session_path, data: {
+      turbo_method: :delete,
+      turbo_confirm: "Are you sure?"
+      } %>
+<% end %>
+    <%= link_to "Back to events", events_path %>
+</div>
+
+<% if user_signed_in? %>
+<% if current_user && @event.creator != current_user && !@event.attendees.include?(current_user) %>
+  <%= link_to "Attend the event", create_attending_event_path(current_user), data: {
+      turbo_method: :post,
+      turbo_confirm: "Are you sure?"
+      } %>
+<% elsif current_user && @event.creator != current_user && @event.attendees.include?(current_user) %>
+ <div>You have registered for the event</div>
+ <%= link_to "Deregister the event", destroy_attending_event_path(current_user), data: {
+  turbo_method: :delete,
+  turbo_confirm: "Are you sure?"
+  } %>
+<% end %>
+<% end %>
+
+<h2>Attendees</h2>
+<% @event.attendees.each do |attendee| %>
+  <%= attendee.email %>
+<% end %>
