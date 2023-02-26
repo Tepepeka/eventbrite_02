@@ -7,7 +7,9 @@ Rails.application.routes.draw do
 
   root "pages#show", page: "home"
   devise_for :users
-  resources :users
+  resources :users, only: [:show] do
+    resources :profil_pictures, only: [:create]
+  end
   resources :events
 
   post "/users/:user_id/events/:id", to: "attendances#create", as: "create_attending_event"

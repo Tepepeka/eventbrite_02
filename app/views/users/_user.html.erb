@@ -1,4 +1,19 @@
 <div id="<%= dom_id user %>">
+
+  <h3>Profil picture</h3>
+  <%if @user.profil_picture.attached?%>
+    <%= image_tag @user.profil_picture, alt: 'profil picture' %>
+  <%else%>
+    <p>No profil picture</p>
+  <%end%>
+
+  <%= form_with(url: user_profil_pictures_path(@user), method: :post, local: false, multipart: true) do |form| %>
+    <%= form.file_field :profil_picture %>
+    <%= form.submit "update" %>
+  <% end %>
+  
+
+
   <p>
     <strong>User:</strong>
     <%= user.email %>
