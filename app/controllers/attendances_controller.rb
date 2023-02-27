@@ -9,13 +9,13 @@ class AttendancesController < ApplicationController
     def create
 
         @event.attendees << current_user
-        redirect_to root_path, notice: "You have registered."
+        redirect_to @event, notice: "You have registered."
     end
 
     def destroy
 
         @event.attendees.delete(current_user)
-        redirect_to root_path, notice: "You have deregistered"
+        redirect_to @event, notice: "You have deregistered"
     end
 
     #######

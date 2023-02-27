@@ -13,7 +13,6 @@ Rails.application.routes.draw do
   resources :events
 
   post "/users/:user_id/events/:id", to: "attendances#create", as: "create_attending_event"
-  get "/users/:id/attented_events", to: "users#show_attended_events", as: "show_attended_events"
   delete "/users/:user_id/events/:id", to: "attendances#destroy", as: "destroy_attending_event"
 
 end

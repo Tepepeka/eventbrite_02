@@ -1,32 +1,52 @@
 <div id="<%= dom_id user %>">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Profil picture</h5>
 
-  <h3>Profil picture</h3>
-  <%if @user.profil_picture.attached?%>
-    <%= image_tag @user.profil_picture, alt: 'profil picture' %>
-  <%else%>
-    <p>No profil picture</p>
-  <%end%>
+            <%if @user.profil_picture.attached?%>
+              <%= image_tag @user.profil_picture, alt: 'profil picture' %>
+            <%else%>
+              <p class="card-text">No profil picture</p>
+            <%end%>
 
-  <%= form_with(url: user_profil_pictures_path(@user), method: :post, local: false, multipart: true) do |form| %>
-    <%= form.file_field :profil_picture %>
-    <%= form.submit "update" %>
-  <% end %>
+            
+            <% if user_signed_in? %>
+              <% if current_user == @user %>
+              <%= form_with(url: user_profil_pictures_path(@user), method: :post, local: false, multipart: true) do |form| %>
+                <%= form.file_field :profil_picture %>
+                <%= form.submit "update", class:"btn btn-warning" %>
+              <% end %>
+            <% end %>
+            <% end %>
+          
+
+            <h5 class="card-title">User:</h5>
+            <p class="card-text"><%= user.email %></p>
   
+            <h5 class="card-title">Events title:</h5>
+            <% user.created_events.each do |event| %>
+              <p class="card-text"><%=link_to event.title, event %></p>
+            <% end %>
 
-
-  <p>
-    <strong>User:</strong>
-    <%= user.email %>
-  </p>
-
-  <p>
-  <strong>Events title:</strong>
-  <ul>
-    <% user.created_events.each do |event| %>
-      <li><%= event.title %></li>
-    <% end %>
-  </ul>
-</p>
-
-
+            <h5 class="card-title">Events attend:</h5>
+            <% user.attended_events.each do |event| %>
+              <p class="card-text"><%=link_to event.title, event %></p>
+            <% end %>
+            
+            <div class="mb-2">
+              <%= link_to "Back", events_path, class:"btn btn-secondary" %>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+
+
+

@@ -1,17 +1,12 @@
 class UsersController < ApplicationController
 
   before_action :set_user, only: %i[ show ]
-  before_action :owner?, only: %i[ show ]
-
 
   def show
 
   end
 
-  def show_attended_events
-    @attended_events = current_user.attended_events
-  end
-
+ 
   #######
   private
   #######

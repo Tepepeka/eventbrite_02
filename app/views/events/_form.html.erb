@@ -1,47 +1,59 @@
-<%= form_with(model: event) do |form| %>
-  <% if event.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <h1>New event</h1>
+      <%= form_with(model: event) do |form| %>
+        <form>
+          <% if event.errors.any? %>
+            <div style="color: red">
+              <h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
 
-      <ul>
-        <% event.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+              <ul>
+                <% event.errors.each do |error| %>
+                  <li><%= error.full_message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <div class="form-group mb-2">
+            <%= form.label :start_date, style: "display: block" %>
+            <%= form.datetime_field :start_date, class:"form-control" %>
+          </div>
+
+          <div class="form-group mb-2">
+            <%= form.label :duration, style: "display: block" %>
+            <%= form.number_field :duration, class:"form-control" %>
+          </div>
+
+          <div class="form-group mb-2">
+            <%= form.label :title, style: "display: block" %>
+            <%= form.text_field :title, class:"form-control" %>
+          </div>
+
+          <div class="form-group mb-2">
+            <%= form.label :description, style: "display: block" %>
+            <%= form.text_area :description, class:"form-control" %>
+          </div>
+
+          <div class="form-group mb-2">
+            <%= form.label :price, style: "display: block" %>
+            <%= form.number_field :price, class:"form-control" %>
+          </div>
+
+          <div class="form-group mb-2">
+            <%= form.label :location, style: "display: block" %>
+            <%= form.text_field :location, class:"form-control" %>
+          </div>
+
+          <div class="actions mb-2">
+            <%= form.submit "Create", class:"btn btn-success"%>
+            <%= link_to "Back", root_path, class:"btn btn-secondary" %>
+          </div>
+
+        </form>
+      <% end %>
     </div>
-  <% end %>
-
-  <div>
-    <%= form.label :start_date, style: "display: block" %>
-    <%= form.datetime_field :start_date %>
   </div>
+</div>
 
-  <div>
-    <%= form.label :duration, style: "display: block" %>
-    <%= form.number_field :duration %>
-  </div>
-
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div>
-    <%= form.label :price, style: "display: block" %>
-    <%= form.number_field :price %>
-  </div>
-
-  <div>
-    <%= form.label :location, style: "display: block" %>
-    <%= form.text_field :location %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>

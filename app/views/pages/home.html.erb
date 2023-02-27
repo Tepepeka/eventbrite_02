@@ -1,15 +1,10 @@
-<ul>
-  <% if user_signed_in? %>
-    <li><%=link_to current_user.email, user_path(current_user.id)%></li>
-    <li><%= link_to "Sign out", destroy_user_session_path, data: {
-      turbo_method: :delete,
-      turbo_confirm: "Are you sure?"
-      } %></li>
-  <% else %>
-  <li><%= link_to "Sign in", new_user_session_path %> </li>
-  <li><%= link_to "Sign up", new_user_registration_path %></li>
-  <% end %>
-</ul>
-
-<%= link_to "Create event", new_event_path %>
-<%= link_to "All events", events_path %>
+<section class="jumbotron text-center mt-4">
+  <div class="container">
+    <h1 class="jumbotron-heading">NBA TIME</h1>
+    <p class="lead">Let's watch basketball together!!</p>
+    <p>
+      <%=link_to "Create event", new_event_path, class:"btn btn-success my-2"%>
+      <%=link_to "All events", events_path, class:"btn btn-primary my-2"%>
+    </p>
+  </div>
+</section>
