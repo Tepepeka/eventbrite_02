@@ -1,0 +1,45 @@
+<div class="container">
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <h2>Users list / <%= link_to "Events list" %></h2>
+        
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Events</th>
+                        <th scope="col">Is_admin?</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <% @users.sort{|a,b| b.created_at <=> a.created_at}.each do |user| %>
+                        <tr>
+                            <th scope="row"><%= link_to user.id, admin_user_path(user) %></th>
+                            <td><%= user.name %></td>
+                            <td><%= user.email%></td>
+                            <td><%= user.created_events.count %></td>
+                            <td><%= user.admin? %></td>
+                            <td>
+                                <%= link_to "Edit", edit_admin_user_path(user) %>
+                                /
+                                <%= link_to "Destroy", admin_user_path(user), data: {
+                                  turbo_method: :delete,
+                                  turbo_confirm: "Are you sure?"
+                                } %>
+                            </td>
+                        </tr>
+                    <% end %>
+                </tbody>
+            </table> 
+        </div>
+        <div class="mb-2">
+            <%= link_to "back", root_path, class:"btn btn-secondary" %></p>
+        </div>
+    </div>
+</div>
+</div>

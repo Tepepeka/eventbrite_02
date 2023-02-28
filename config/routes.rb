@@ -7,10 +7,15 @@ Rails.application.routes.draw do
 
   root "pages#show", page: "home"
   devise_for :users
-  resources :users, only: [:show] do
-    resources :profil_pictures, only: [:create]
-  end
   resources :events
+
+  resources :users, only: %i[ show edit update destroy ] do
+    resources :profil_pictures, only: %i[ create ]
+  end
+
+  namespace :admin do
+    resources :users
+  end
 
   post "/users/:user_id/events/:id", to: "attendances#create", as: "create_attending_event"
   delete "/users/:user_id/events/:id", to: "attendances#destroy", as: "destroy_attending_event"

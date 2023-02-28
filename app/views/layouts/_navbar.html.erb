@@ -18,7 +18,7 @@
 
                 <div class="align-self-center">
                     <% if user_signed_in? %>
-                        #Hi, <%=link_to current_user.email, user_path(current_user.id)%>!
+                        #Hi, <%=link_to current_user.email, user_path(current_user.id)%> !
                         /
                         <%= link_to "Sign out", destroy_user_session_path, data: {
                                                 turbo_method: :delete,

@@ -1,5 +1,3 @@
-<p style="color: green"><%= notice %></p>
-
 <div class="container">
   <div class="row">
     <div class="col-md-6 offset-md-3">
@@ -20,18 +18,19 @@
                                     turbo_confirm: "Are you sure?"
                                   } %>
             <% end %>
-            
           </div>
+            
+         
 
           <div class="mb-2">
             <% if user_signed_in? %>
-              <% if current_user && @event.creator != current_user && !@event.attendees.include?(current_user) %>
+              <% if registered?(@event) %>
                 <%= link_to "Attend the event", create_attending_event_path(current_user), class:"btn btn-success", data: {
                                               turbo_method: :post,
                                               turbo_confirm: "Are you sure?"
                                             } %>
-              <% elsif current_user && @event.creator != current_user && @event.attendees.include?(current_user) %>
-                <p class="card-text">You have registered for the event</p>
+              <% elsif not_registered?(@event) %>
+                <p class="card-text mb-2">You have registered for the event</p>
                 <%= link_to "Deregister the event", destroy_attending_event_path(current_user), class:"btn btn-warning", data: {
                                                   turbo_method: :delete,
                                                   turbo_confirm: "Are you sure?"

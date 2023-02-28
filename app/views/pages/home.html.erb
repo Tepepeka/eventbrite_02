@@ -1,10 +1,17 @@
 <section class="jumbotron text-center mt-4">
   <div class="container">
+
+  <% if admin? %>
+    <h1 class="jumbotron-heading">TPPK ADMIN</h1>
+    <%= link_to 'dashboard', admin_users_path, class: "btn btn-warning my-2"%>
+  <% else %>
     <h1 class="jumbotron-heading">NBA TIME</h1>
     <p class="lead">Let's watch basketball together!!</p>
     <p>
       <%=link_to "Create event", new_event_path, class:"btn btn-success my-2"%>
       <%=link_to "All events", events_path, class:"btn btn-primary my-2"%>
     </p>
+  <% end %>
+  
   </div>
 </section>
