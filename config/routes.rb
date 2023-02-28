@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users
+    resources :events
   end
 
   post "/users/:user_id/events/:id", to: "attendances#create", as: "create_attending_event"

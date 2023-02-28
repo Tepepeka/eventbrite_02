@@ -13,14 +13,14 @@ class Admin::EventsController < ApplicationController
     def edit
     end
 
-    def destroy
-      @event.destroy
-      redirect_to admin_events_path, notice: 'Event destroy'
-    end
-  
     def update
       @event.update(post_params)
       redirect_to admin_events_path, notice: 'Event update'
+    end
+
+    def destroy
+      @event.destroy
+      redirect_to admin_events_path, notice: 'Event destroy'
     end
     
     #######
@@ -28,7 +28,7 @@ class Admin::EventsController < ApplicationController
     #######
 
     def set_event
-        @event=event.find(params[:id])
+        @event=Event.find(params[:id])
     end
 
     def post_params

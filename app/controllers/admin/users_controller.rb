@@ -13,16 +13,19 @@ class Admin::UsersController < ApplicationController
     def edit
     end
 
+    def update
+      if @user.update(post_params)
+      redirect_to admin_users_path, notice: "User was successfully updated."
+      else
+        render :new, notice: "sa me gonfle"
+      end
+    end
+
     def destroy
       @user.destroy
-      redirect_to admin_users_path, notice: 'User destroy'
+      redirect_to admin_users_path, notice: "User was successfully destroyed."
     end
-  
-    def update
-      @user.update(post_params)
-      redirect_to admin_users_path, notice: 'User update'
-    end
-    
+
     #######
     private
     #######

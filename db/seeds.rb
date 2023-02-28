@@ -50,3 +50,21 @@ end
     puts "*"*(i+1)
     puts "#{i+1} attendance(s) created"
 end
+
+# Admin create
+User.create(
+    name:"tepepeka",
+    email:"tepepeka@love",
+    password:"tepepeka",
+    password_confirmation:"tepepeka",
+    admin: true
+)
+
+# Admin create2
+User.create(
+    name:"Samuel",
+    email:"samuel@love",
+    password:"samuel",
+    password_confirmation:"samuel",
+    admin: true
+)

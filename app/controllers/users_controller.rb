@@ -41,7 +41,7 @@ class UsersController < ApplicationController
   # Only allow user of account.
   def is_user?
     unless current_user == @user
-      redirect_back fallback_location: root_path, notice: 'You are not the user'
+      redirect_back fallback_location: root_path, notice: 'You are not the user.'
     end
   end
 
