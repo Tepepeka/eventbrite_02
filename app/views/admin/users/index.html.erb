@@ -1,29 +1,29 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8 offset-md-2">
-        <h2>Users list / <%= link_to "Events list", admin_events_path %> / <%= link_to "Attendances list", admin_attendances_path %></h2>
+        <h2 class="text-white">Users list / <%= link_to "Events list", admin_events_path %> / <%= link_to "Attendances list", admin_attendances_path %></h2>
         
         <div class="table-responsive">
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Events</th>
-                        <th scope="col">Is_admin?</th>
-                        <th scope="col">Actions</th>
+                        <th scope="col" class="text-white">#</th>
+                        <th scope="col" class="text-white">Name</th>
+                        <th scope="col" class="text-white">Email</th>
+                        <th scope="col" class="text-white">Events</th>
+                        <th scope="col" class="text-white">Is_admin?</th>
+                        <th scope="col" class="text-white">Actions</th>
                     </tr>
                 </thead>
 
                 <tbody>
                     <% @users.sort{|a,b| b.created_at <=> a.created_at}.each do |user| %>
                         <tr>
-                            <th scope="row"><%= link_to user.id, admin_user_path(user) %></th>
-                            <td><%= user.name %></td>
-                            <td><%= user.email%></td>
-                            <td><%= user.created_events.count %></td>
-                            <td><%= user.admin? %></td>
+                            <th scope="row" class="text-white"><%= link_to user.id, admin_user_path(user) %></th>
+                            <td class="text-white"><%= user.name %></td>
+                            <td class="text-white"><%= user.email%></td>
+                            <td class="text-white"><%= user.created_events.count %></td>
+                            <td class="text-white"><%= user.admin? %></td>
                             <td>
                                 <%= link_to "Edit", edit_admin_user_path(user) %>
                                 /

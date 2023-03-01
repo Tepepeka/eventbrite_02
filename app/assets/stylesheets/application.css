@@ -14,6 +14,41 @@
  *= require_self
  */
 
+body, html {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background-image: url("https://images.seattletimes.com/wp-content/uploads/2021/11/urn-publicid-ap-org-e4ecc880c4f013c16d1924a4890e0e60NBA_At_75_1960s_All_Decade_Team_93078.jpg?d=1200x630");
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+navbar.fixed-top {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+}
+
+footer.fixed-bottom {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 999;
+}
+
+.content {
+  overflow: auto; /* Rend le container scrollable si nécessaire */
+}
+
+.container-fluid {
+  max-height:calc(100vh - 106px);
+
+}
+
 a:link { 
     text-decoration:none; 
 }

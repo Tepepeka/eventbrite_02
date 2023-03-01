@@ -1,27 +1,27 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8 offset-md-2">
-      <h2><%= link_to "Users list", admin_users_path %> / Events list / <%= link_to "Attendances list", admin_attendances_path %> </h2>
+      <h2 class="text-white"><%= link_to "Users list", admin_users_path %> / Events list / <%= link_to "Attendances list", admin_attendances_path %> </h2>
         
       <div class="table-responsive">
         <table class="table table-striped">
           <thead>
             <tr>
-              <th scope="col">#</th>
-              <th scope="col">Title</th>
-              <th scope="col">Attendees</th>
-              <th scope="col">Creator</th>
-              <th scope="col">Actions</th>
+              <th scope="col" class="text-white">#</th>
+              <th scope="col" class="text-white">Title</th>
+              <th scope="col" class="text-white">Attendees</th>
+              <th scope="col" class="text-white">Creator</th>
+              <th scope="col" class="text-white">Actions</th>
             </tr>
           </thead>
 
           <tbody>
             <% @events.sort{|a,b| a.creator.email <=> b.creator.email}.each do |event| %>
               <tr>
-                <th scope="row"><%= link_to event.id, admin_event_path(event) %></th>
-                <td><%= event.title %></td>
-                <td><%= event.attendees.count %></td>
-                <td><%= event.creator.email%></td>
+                <th scope="row" class="text-white"><%= link_to event.id, admin_event_path(event) %></th>
+                <td class="text-white"><%= event.title %></td>
+                <td class="text-white"><%= event.attendees.count %></td>
+                <td class="text-white"><%= event.creator.email%></td>
                 <td>
                   <%= link_to "Edit", edit_admin_event_path(event) %>
                   /
@@ -44,4 +44,5 @@
       
     </div>
   </div>
+</div>
 </div>

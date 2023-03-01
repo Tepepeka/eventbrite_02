@@ -11,7 +11,7 @@ Event.destroy_all
 User.destroy_all
 
 # Users create
-10.times do |i|
+12.times do |i|
     name = Faker::Name.first_name
     password = Faker::Internet.password(min_length: 6, max_length: 10)
     User.create(
@@ -26,7 +26,7 @@ end
 
 
 # Events create
-12.times do |i|
+24.times do |i|
     Event.create(
         start_date:Faker::Date.forward,
         title:Faker::Sports::Basketball.team,
@@ -42,7 +42,7 @@ end
 
 
 # Attendance create
-40.times do |i|
+80.times do |i|
     Attendance.create(
         user_id:User.all.sample.id,
         event_id:Event.all.sample.id,
@@ -60,11 +60,20 @@ User.create(
     admin: true
 )
 
-# Admin create2
+# Admin create 2
 User.create(
     name:"Samuel",
     email:"samuel@love",
     password:"samuel",
     password_confirmation:"samuel",
+    admin: true
+)
+
+# Admin create 3
+User.create(
+    name:"Kitoko",
+    email:"kitoko@love",
+    password:"kitoko",
+    password_confirmation:"kitoko",
     admin: true
 )
