@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users
     resources :events
+    resources :attendances, only: %i[ index ]
   end
 
   post "/users/:user_id/events/:id", to: "attendances#create", as: "create_attending_event"

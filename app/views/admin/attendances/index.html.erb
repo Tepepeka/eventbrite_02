@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <h2><%= link_to "Users list", admin_users_path %> / <%= link_to "Events list", admin_events_path %> / Attendances list</h2>
+
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">User</th>
+              <th scope="col">Event</th>
+              <th scope="col">Registered?</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @users.sort{|a,b| a.email <=> b.email}.each_with_index do |user, i| %>
+              <% @events.sort{|a,b| b.created_at <=> a.created_at}.each do |event| %>
+                <tr>
+                  <th scope="row"><%=i+1%></th>
+                  <td><%= user.email %></td>
+                  <td><%= event.title %></td>
+                  <td><%= event.attendees.include?(user) %></td>
+                </tr>
+              <%end%>
+            <% end %>
+          </tbody>
+        </table> 
+      </div>
+
+      <div class="mb-2">
+        <%=link_to "Create event", new_event_path, class:"btn btn-success"%>
+        <%=link_to "All events", events_path, class:"btn btn-primary"%>
+        <%= link_to "back", root_path, class:"btn btn-secondary" %></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
